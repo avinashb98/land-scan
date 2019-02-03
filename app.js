@@ -9,6 +9,7 @@ const Session = require('express-session');
 require('./config/db');
 
 // Routes
+const UserRoutes = require('./src/routes/user');
 
 // Passport configurations
 require('./config/passport');
@@ -55,5 +56,7 @@ app.get('/api/', (req, res) => {
     msg: 'Welcome to Land-Scan API'
   });
 });
+
+app.use('/api/user/', UserRoutes);
 
 module.exports = app;
