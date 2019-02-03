@@ -9,6 +9,10 @@ const UserSchema = new Schema({
   name: {
     type: String
   },
+  userId: {
+    type: String,
+    unique: true
+  },
   passwordHash: {
     type: String
   },

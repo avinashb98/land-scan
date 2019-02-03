@@ -10,6 +10,9 @@ require('./config/db');
 
 // Routes
 
+// Passport configurations
+require('./config/passport');
+
 // Initializing express app
 const app = express();
 
