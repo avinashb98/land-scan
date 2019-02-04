@@ -14,7 +14,7 @@ const add = async (req, res) => {
     });
     vector.setUid();
     vector.setClassId(className);
-    await vector.setRegion(region);
+    await vector.setVector(region);
     await vector.save();
   } catch (error) {
     console.log(error);
@@ -37,6 +37,37 @@ const add = async (req, res) => {
   });
 };
 
+const getAll = async (req, res) => {
+  let vectors;
+  const projections = {
+    name: 1,
+    description: 1,
+    location: 1,
+    uid: 1,
+    region: 1,
+    className: 1
+  };
+
+  try {
+    vectors = await Vector.find({}, projections);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: 'Internal Server Error',
+      data: {}
+    });
+    return;
+  }
+
+  res.status(200).json({
+    message: 'List of all vectors',
+    data: {
+      vectors
+    }
+  });
+};
+
 module.exports = {
-  add
+  add,
+  getAll
 };
