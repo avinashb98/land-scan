@@ -67,7 +67,29 @@ const getAll = async (req, res) => {
   });
 };
 
+const remove = async (req, res) => {
+  const { uid } = req.body;
+  const user = req.decoded.id;
+
+  try {
+    await Vector.deleteOne({ uid, owner: user });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: 'Internal Server Error',
+      data: {}
+    });
+    return;
+  }
+
+  res.status(200).json({
+    message: 'Vector successfully deleted',
+    data: {}
+  });
+};
+
 module.exports = {
   add,
-  getAll
+  getAll,
+  remove
 };
