@@ -11,6 +11,7 @@ require('./config/db');
 // Routes
 const UserRoutes = require('./src/routes/user');
 const RegionRoutes = require('./src/routes/region');
+const VectorRoutes = require('./src/routes/vector');
 
 // Passport configurations
 require('./config/passport');
@@ -60,5 +61,6 @@ app.get('/api/', (req, res) => {
 
 app.use('/api/user/', UserRoutes);
 app.use('/api/region/', RegionRoutes);
+app.use('/api/vector/', VectorRoutes);
 
 module.exports = app;
