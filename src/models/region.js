@@ -5,28 +5,28 @@ const { Schema } = mongoose;
 const RegionSchema = new Schema({
   uid: {
     type: String,
-    unique: true,
-    name: {
-      type: String
+    unique: true
+  },
+  name: {
+    type: String
+  },
+  description: {
+    type: String
+  },
+  location: {
+    type: {
+      type: String,
+      enum: ['Point'],
+      required: true
     },
-    description: {
-      type: String
-    },
-    location: {
-      type: {
-        type: String,
-        enum: ['Point'],
-        required: true
-      },
-      coordinates: {
-        type: [Number],
-        required: true
-      }
-    },
-    owner: {
-      type: Schema.Types.ObjectId,
-      ref: 'User'
+    coordinates: {
+      type: [Number],
+      required: true
     }
+  },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   }
 });
 
